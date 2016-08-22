@@ -11,6 +11,9 @@ Config.define('TC_AWS_REGION',                    'eu-west-1', 'S3 region', 'S3'
 Config.define('TC_AWS_STORAGE_BUCKET',             None,       'S3 bucket for Storage', 'S3')
 Config.define('TC_AWS_STORAGE_ROOT_PATH',          '',         'S3 path prefix for Storage bucket', 'S3')
 
+Config.define('TC_AWS_UPLOAD_BUCKET',             None,       'S3 bucket for Upload', 'S3')
+Config.define('TC_AWS_UPLOAD_ROOT_PATH',          '',         'S3 path prefix for Upload bucket', 'S3')
+
 Config.define('TC_AWS_LOADER_BUCKET',              None,       'S3 bucket for loader', 'S3')
 Config.define('TC_AWS_LOADER_ROOT_PATH',           '',         'S3 path prefix for Loader bucket', 'S3')
 

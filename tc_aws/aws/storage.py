@@ -218,6 +218,14 @@ class AwsStorage():
 
         return path
 
+    def set_bucket(self, bucket):
+        """
+        Stashes a customized bucket for variable support
+        :param string bucket: bucket to assign to this storage
+        """
+
+        self._variable_bucket = bucket
+
     def _get_error(self, response):
         """
         Returns error in response if it exists
@@ -245,7 +253,15 @@ class AwsStorage():
         :param default: Default value if not found
         :return: Resolved config value
         """
-        return getattr(self.context.config, '%s_%s' % (self.config_prefix, config_key))
+        attr = getattr(self.context.config, '%s_%s' % (self.config_prefix, config_key))
+        if self.context.config.TC_AWS_VARIABLE_BUCKET:
+            try:
+                return self._variable_bucket
+            except AttributeError:
+                #TODO ensure bucket exists
+                print('No bucket name passed...')
+        else:
+            return attr
 
     def _normalize_path(self, path):
         """
